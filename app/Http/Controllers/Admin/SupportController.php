@@ -30,10 +30,6 @@ class SupportController extends Controller
 
     public function show(string $id)
     {
-        // Support::find($id) -> find busca pela primary_key da tabela
-        // Support::where('id', $id) -> where busca por uma coluna especiafica da tabela
-        // Support::where('id', $id)->first() -> recupera o primeiro registro
-        // Support::where('id', '=', $id)->first() -> possível passar critério de comparação
         if(!$support = $this->service->findOne($id)){
             return back();
         }
@@ -48,10 +44,6 @@ class SupportController extends Controller
 
     public function store(StoreUpdateSupport $request, Support $support)
     {
-        // $data = $request->validated();
-        // $data['status'] = 'a';
-        // $support->create($data);
-
         $this->service->new(
             CreateSupportDTO::makeFromRequest($request)
         );
@@ -61,7 +53,6 @@ class SupportController extends Controller
 
     public function edit(string $id)
     {
-        //if(!$support = $support->where('id', $id)->first()){
         if(!$support = $this->service->findOne($id)){
             return back();
         }
@@ -79,21 +70,12 @@ class SupportController extends Controller
             return back();
         }
 
-        // $support->subject = $request->subject;
-        // $support->description = $request->description;
-        // $support->save();
-        // $support->update($request->only([
-        //     'subject', 'description'
-        // ]));
-
         return redirect()->route('supports.index');
     }
 
     public function destroy(string $id)
     {
-
         $this->service->delete($id);
-
         return redirect()->route('supports.index');
     }
 }
