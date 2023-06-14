@@ -13,7 +13,7 @@
             <tr>
                 <td>{{ $support->subject }}</td>
                 <td>{{ $support->description }}</td>
-                <td>{{ $support->status }}</td>
+                <td>{{ getStatusSupport($support->status) }}</td>
                 <td>
                     <a href="{{ route('supports.show',$support->id) }}">Detalhes</a> |
                     <a href="{{ route('supports.edit',$support->id) }}">Editar</a>
