@@ -2,7 +2,8 @@
 @php
     $queryParams = (isset($appends) && gettype($appends) === 'array') ? '&' . http_build_query($appends) : ''
 @endphp
-    <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-between">
+<div class="flex flex-row-reverse space-x-4 space-x-reverse">
+    <nav role="navigation" aria-label="Pagination Navigation" class="flex flex-row space-x-4 space-x">
         {{-- Previous Page Link --}}
         @if ($paginator->isFirstPage())
             <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">
@@ -25,4 +26,5 @@
             </span>
         @endif
     </nav>
+</div>
 @endif
